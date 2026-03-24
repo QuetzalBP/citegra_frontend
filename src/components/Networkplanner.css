@@ -1,0 +1,673 @@
+/* NetworkPlanner.css */
+
+.network-planner {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: 0;
+  background: #fafafa;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+  min-height: 700px;
+  position: relative;
+}
+
+/* ========== TOOLBAR (SIDEBAR IZQUIERDO) ========== */
+.planner-toolbar {
+  background: #ffffff;
+  border-right: 1px solid #e0e0e0;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  overflow-y: auto;
+  max-height: 100%;
+}
+
+.toolbar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.toolbar-header h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+}
+
+.project-name-input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #1a1a1a;
+  background: #fafafa;
+  transition: all 0.2s ease;
+}
+
+.project-name-input:focus {
+  outline: none;
+  border-color: #1565c0;
+  background: #ffffff;
+}
+
+.mobile-close {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #666;
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Catálogo de dispositivos */
+.device-catalog {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.catalog-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: #fafafa;
+  border: 1px solid #e8e8e8;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.catalog-item:hover {
+  background: #ffffff;
+  border-color: #1565c0;
+  box-shadow: 0 2px 8px rgba(21, 101, 192, 0.1);
+  transform: translateX(4px);
+}
+
+.catalog-item:active {
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.catalog-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.catalog-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.catalog-desc {
+  font-size: 0.8rem;
+  color: #888;
+  font-weight: 300;
+}
+
+/* Controles */
+.planner-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 20px;
+  border-top: 1px solid #e8e8e8;
+}
+
+.control-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: #ffffff;
+  border: 1px solid #1565c0;
+  color: #1565c0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.control-btn:hover:not(:disabled) {
+  background: #1565c0;
+  color: #000000;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(21, 101, 192, 0.2);
+}
+
+.control-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.control-btn.active {
+  background: #1565c0;
+  color: #ffffff;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.control-btn.success {
+  border-color: #388e3c;
+  color: #388e3c;
+}
+
+.control-btn.success:hover:not(:disabled) {
+  background: #388e3c;
+  color: #ffffff;
+  box-shadow: 0 4px 8px rgba(56, 142, 60, 0.2);
+}
+
+.control-btn.danger {
+  border-color: #d32f2f;
+  color: #d32f2f;
+}
+
+.control-btn.danger:hover:not(:disabled) {
+  background: #d32f2f;
+  color: #ffffff;
+  box-shadow: 0 4px 8px rgba(211, 47, 47, 0.2);
+}
+
+.control-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* Estadísticas */
+.planner-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  padding-top: 20px;
+  border-top: 1px solid #e8e8e8;
+}
+
+.stat {
+  text-align: center;
+  padding: 15px;
+  background: #fafafa;
+  border-radius: 4px;
+  border: 1px solid #e8e8e8;
+}
+
+.stat-value {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1565c0;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.85rem;
+  color: #666;
+  font-weight: 500;
+}
+
+/* ========== CANVAS PRINCIPAL ========== */
+.planner-canvas-container {
+  background: #ffffff;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.canvas-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.canvas-title-group h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 5px;
+}
+
+.canvas-title-group p {
+  font-size: 0.85rem;
+  color: #666;
+  font-weight: 300;
+}
+
+.mobile-add-btn {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: #1565c0;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mobile-add-btn:hover {
+  background: #0d47a1;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(21, 101, 192, 0.3);
+}
+
+.mobile-add-btn:active {
+  transform: translateY(0);
+}
+
+.canvas-wrapper {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  background: #ffffff;
+  border: 2px solid #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+  touch-action: none;
+}
+
+.network-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cline x1='12' y1='2' x2='12' y2='22' stroke='black' stroke-width='1.5'/%3E%3Cline x1='2' y1='12' x2='22' y2='12' stroke='black' stroke-width='1.5'/%3E%3C/svg%3E") 12 12, crosshair;
+}
+
+/* ========== DISPOSITIVOS (NODOS) ========== */
+.device-node {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: move;
+  user-select: none;
+  transition: transform 0.1s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.device-node:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  transform: scale(1.05) !important;
+}
+
+.device-node.selected {
+  outline: 3px solid #ff9800;
+  outline-offset: 2px;
+  box-shadow: 0 6px 20px rgba(255, 152, 0, 0.4);
+}
+
+.device-node.connecting {
+  animation: connecting-pulse 1s infinite;
+}
+
+@keyframes connecting-pulse {
+  0%, 100% { 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 0 0 0 rgba(21, 101, 192, 0.7);
+  }
+  50% { 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 0 0 8px rgba(21, 101, 192, 0);
+  }
+}
+
+.device-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+
+.device-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  line-height: 1.2;
+  padding: 0 4px;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Opciones del dispositivo */
+.device-options {
+  position: absolute;
+  top: -45px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 5px;
+  background: #ffffff;
+  padding: 5px;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.option-btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: #f0f0f0;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.option-btn:hover {
+  transform: scale(1.1);
+}
+
+.option-btn.connect {
+  background: #1565c0;
+}
+
+.option-btn.connect:hover {
+  background: #0d47a1;
+  box-shadow: 0 2px 6px rgba(21, 101, 192, 0.4);
+}
+
+.option-btn.delete {
+  background: #d32f2f;
+}
+
+.option-btn.delete:hover {
+  background: #b71c1c;
+  box-shadow: 0 2px 6px rgba(211, 47, 47, 0.4);
+}
+
+/* ========== ESTADO VACÍO ========== */
+.empty-state {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #999;
+  pointer-events: none;
+}
+
+.empty-state svg {
+  margin-bottom: 20px;
+  opacity: 0.3;
+  color: #999;
+}
+
+.empty-state h4 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.empty-state p {
+  font-size: 1rem;
+  color: #888;
+  max-width: 400px;
+  line-height: 1.6;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 1200px) {
+  .network-planner {
+    grid-template-columns: 300px 1fr;
+  }
+}
+
+@media (max-width: 992px) {
+  .network-planner {
+    grid-template-columns: 1fr;
+    position: relative;
+  }
+
+  /* Toolbar flotante en móvil */
+  .planner-toolbar {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 90%;
+    max-width: 400px;
+    height: 100vh;
+    z-index: 1000;
+    border-right: none;
+    box-shadow: 2px 0 20px rgba(0, 0, 0, 0.3);
+    transition: left 0.3s ease;
+    overflow-y: auto;
+  }
+
+  .planner-toolbar.mobile-show {
+    left: 0;
+  }
+
+  /* Overlay cuando el toolbar está abierto */
+  .planner-toolbar.mobile-show::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+  }
+
+  .mobile-close {
+    display: flex;
+  }
+
+  .mobile-add-btn {
+    display: flex;
+  }
+
+  .planner-canvas-container {
+    padding: 20px;
+  }
+
+  .canvas-wrapper {
+    height: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .planner-canvas-container {
+    padding: 15px;
+  }
+
+  .canvas-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .mobile-add-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .catalog-item {
+    padding: 10px;
+  }
+
+  .catalog-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .catalog-name {
+    font-size: 0.9rem;
+  }
+
+  .catalog-desc {
+    font-size: 0.75rem;
+  }
+
+  .device-node {
+    width: 60px;
+    height: 60px;
+  }
+
+  .device-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .device-label {
+    font-size: 0.6rem;
+  }
+
+  .device-options {
+    top: -40px;
+  }
+
+  .option-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .canvas-wrapper {
+    height: 400px;
+  }
+
+  .empty-state svg {
+    width: 60px;
+    height: 60px;
+  }
+
+  .empty-state h4 {
+    font-size: 1.2rem;
+  }
+
+  .empty-state p {
+    font-size: 0.9rem;
+    padding: 0 20px;
+  }
+
+  .planner-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .control-btn {
+    font-size: 0.9rem;
+    padding: 10px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .planner-toolbar {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .canvas-title-group h4 {
+    font-size: 1rem;
+  }
+
+  .canvas-title-group p {
+    font-size: 0.8rem;
+  }
+
+  .device-node {
+    width: 50px;
+    height: 50px;
+  }
+
+  .device-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .device-label {
+    font-size: 0.55rem;
+  }
+
+  .canvas-wrapper {
+    height: 350px;
+  }
+}
+
+/* ========== ANIMACIONES ADICIONALES ========== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.catalog-item,
+.control-btn,
+.stat {
+  animation: fadeIn 0.3s ease;
+}
+
+/* ========== MEJORAS DE ACCESIBILIDAD ========== */
+.control-btn:focus,
+.catalog-item:focus,
+.option-btn:focus {
+  outline: 2px solid #1565c0;
+  outline-offset: 2px;
+}
+
+.project-name-input::placeholder {
+  color: #999;
+}
+
+/* ========== SCROLLBAR PERSONALIZADO ========== */
+.planner-toolbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.planner-toolbar::-webkit-scrollbar-track {
+  background: #f5f5f5;
+}
+
+.planner-toolbar::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+.planner-toolbar::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}

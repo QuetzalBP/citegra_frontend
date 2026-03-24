@@ -1,0 +1,453 @@
+/* =====================================================
+   Footer.css — Editorial Azul · Circuitos PCB
+   ===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=Share+Tech+Mono&display=swap');
+
+/* ── Variables ─────────────────────────────────── */
+.footer {
+  --primary:      #64b5f6;
+  --primary-dim:  rgba(100, 181, 246, 0.15);
+  --primary-soft: rgba(100, 181, 246, 0.7);
+  --bg:           linear-gradient(135deg, #0a1628 0%, #1a2a4a 50%, #0d47a1 100%);
+  --bg-card:      rgba(33, 150, 243, 0.05);
+  --rule:         rgba(100, 181, 246, 0.15);
+  --text:         rgba(255, 255, 255, 0.9);
+  --text-soft:    rgba(227, 242, 253, 0.7);
+  --text-muted:   rgba(227, 242, 253, 0.35);
+
+  position: relative;
+  background: linear-gradient(135deg, #0a1628 0%, #1a2a4a 50%, #0d47a1 100%);
+  overflow: hidden;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* ── Canvas de circuitos ───────────────────────── */
+.circuit-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Capa de contenido ─────────────────────────── */
+.footer-content {
+  position: relative;
+  z-index: 1;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 60px;
+}
+
+/* ── Franja superior ───────────────────────────── */
+.footer-topline {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 28px 0 36px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.footer-topline-text {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--primary);
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: 0.9;
+}
+
+.footer-topline-rule {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--primary-soft) 0%, transparent 100%);
+}
+
+/* ── Grid principal ────────────────────────────── */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 340px 1fr 1fr 1fr;
+  gap: 60px;
+  padding: 56px 0 60px;
+  border-bottom: 1px solid var(--rule);
+}
+
+/* ── Col Marca ─────────────────────────────────── */
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.footer-logo-img {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.95;
+}
+
+.footer-logo-text {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.3rem;
+  font-weight: 400;
+  letter-spacing: 4px;
+  color: var(--primary);
+}
+
+.footer-tagline {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--text-soft);
+  font-weight: 300;
+  max-width: 290px;
+  margin: 0 0 28px;
+}
+
+/* Botones de redes */
+.footer-social {
+  display: flex;
+  gap: 12px;
+}
+
+.fsocial-btn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-soft);
+  border: 1px solid var(--rule);
+  text-decoration: none;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.fsocial-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--primary-dim);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.25s ease;
+}
+
+.fsocial-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  box-shadow: 0 0 14px rgba(100, 181, 246, 0.3);
+}
+
+.fsocial-btn:hover::before {
+  transform: scaleY(1);
+}
+
+.fsocial-btn svg {
+  position: relative;
+  z-index: 1;
+}
+
+.fsocial-btn.instagram:hover {
+  border-color: #e1306c;
+  color: #e1306c;
+  box-shadow: 0 0 14px rgba(225, 48, 108, 0.25);
+}
+
+.fsocial-btn.instagram::before {
+  background: rgba(225, 48, 108, 0.08);
+}
+
+/* ── Títulos de columnas ───────────────────────── */
+.footer-col-title {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin: 0 0 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--rule);
+}
+
+/* ── Links de navegación ───────────────────────── */
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.footer-link-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: none;
+  border: none;
+  color: var(--text-soft);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 400;
+  padding: 7px 0;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 100%;
+  text-align: left;
+}
+
+.link-arrow {
+  color: var(--primary);
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: all 0.2s;
+  font-size: 0.9rem;
+}
+
+.footer-link-btn:hover {
+  color: var(--text);
+  padding-left: 4px;
+}
+
+.footer-link-btn:hover .link-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ── Servicios ─────────────────────────────────── */
+.footer-service-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.88rem;
+  color: var(--text-soft);
+  padding: 7px 0;
+  line-height: 1.4;
+}
+
+.service-dot {
+  flex-shrink: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--primary);
+  opacity: 0.7;
+  box-shadow: 0 0 8px rgba(100, 181, 246, 0.4);
+}
+
+/* ── Contacto ──────────────────────────────────── */
+.footer-contact-items {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.fcontact-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.fcontact-icon {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  border: 1px solid var(--rule);
+  margin-top: 2px;
+}
+
+.fcontact-label {
+  display: block;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--primary);
+  opacity: 0.8;
+  margin-bottom: 4px;
+}
+
+.fcontact-value {
+  display: block;
+  font-size: 0.88rem;
+  color: var(--text-soft);
+  line-height: 1.55;
+  font-weight: 300;
+}
+
+.fcontact-link {
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.fcontact-link:hover {
+  color: var(--primary);
+}
+
+/* Chip de Google Maps */
+.footer-map-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border: 1px solid var(--rule);
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-weight: 500;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: all 0.25s;
+  margin-top: 4px;
+}
+
+.footer-map-chip:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  box-shadow: 0 0 10px rgba(100, 181, 246, 0.2);
+}
+
+/* ── Franja inferior ───────────────────────────── */
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 0 30px;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-bottom-left {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  letter-spacing: 0.3px;
+}
+
+.footer-bottom-badges {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.footer-badge {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--primary);
+  opacity: 0.6;
+  padding: 5px 10px;
+  border: 1px solid var(--rule);
+}
+
+/* ── Responsive ────────────────────────────────── */
+@media (max-width: 1200px) {
+  .footer-grid {
+    grid-template-columns: 280px 1fr 1fr;
+    gap: 50px;
+  }
+
+  /* Contacto ocupa toda la segunda fila */
+  .footer-col:last-child {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+
+  .footer-col:last-child .footer-col-title {
+    grid-column: 1 / -1;
+  }
+
+  .footer-col:last-child .footer-contact-items {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 900px) {
+  .footer-content {
+    padding: 0 30px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .footer-col-brand {
+    grid-column: 1 / -1;
+  }
+
+  .footer-col:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .footer-col:last-child .footer-contact-items {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer-content {
+    padding: 0 20px;
+  }
+
+  .footer-topline-text {
+    font-size: 0.65rem;
+    letter-spacing: 1.5px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    padding: 40px 0 50px;
+  }
+
+  .footer-col-brand {
+    grid-column: auto;
+  }
+
+  .footer-col:last-child {
+    grid-column: auto;
+  }
+
+  .footer-col:last-child .footer-contact-items {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .footer-logo-text {
+    font-size: 1.1rem;
+  }
+
+  .footer-badge {
+    font-size: 0.62rem;
+  }
+}
+
+/* ── Micro animaciones ─────────────────────────── */
+@keyframes pulse-blue {
+  0%, 100% { opacity: 0.6; }
+  50%       { opacity: 1; }
+}
+
+.footer-badge:first-child {
+  animation: pulse-blue 3s ease-in-out infinite;
+}

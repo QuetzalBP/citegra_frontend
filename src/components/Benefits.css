@@ -1,0 +1,361 @@
+/* Benefits.css - Diseño Profesional Corporativo */
+
+.benefits-section {
+  position: relative;
+  background: #fafafa;
+}
+
+/* ========== IMAGEN HERO SUPERIOR ========== */
+.benefits-hero {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  background: #000;
+}
+
+.hero-image-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg, 
+    rgba(0, 0, 0, 0.3) 0%, 
+    rgba(0, 0, 0, 0.5) 100%
+  );
+}
+
+/* ========== CONTENEDOR PRINCIPAL ========== */
+.benefits-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 100px 40px;
+}
+
+/* ========== HEADER DE SECCIÓN ========== */
+.benefits-header {
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.section-number {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1565c0;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+  font-family: 'Courier New', monospace;
+}
+
+.benefits-title {
+  font-size: 3.2rem;
+  font-weight: 300;
+  color: #1a1a1a;
+  line-height: 1.2;
+  margin: 0 auto 30px;
+  letter-spacing: -0.5px;
+}
+
+.title-underline {
+  width: 80px;
+  height: 3px;
+  background: #1565c0;
+  margin: 0 auto 30px;
+}
+
+.benefits-subtitle {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #4a4a4a;
+  max-width: 800px;
+  margin: 0 auto;
+  font-weight: 300;
+}
+
+/* ========== CARDS DE BENEFICIOS ========== */
+.benefits-list {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+.benefit-card {
+  display: grid;
+  grid-template-columns: 500px 1fr;
+  gap: 60px;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.benefit-card:hover {
+  border-color: #1565c0;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* Alternar posición de imagen */
+.benefit-card.card-right {
+  grid-template-columns: 1fr 500px;
+}
+
+.benefit-card.card-right .benefit-image-wrapper {
+  order: 2;
+}
+
+.benefit-card.card-right .benefit-content {
+  order: 1;
+}
+
+/* ========== IMAGEN DEL BENEFICIO ========== */
+.benefit-image-wrapper {
+  position: relative;
+  height: 100%;
+  min-height: 400px;
+  overflow: hidden;
+  background: #f0f0f0;
+}
+
+.benefit-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.benefit-card:hover .benefit-image {
+  transform: scale(1.05);
+}
+
+.image-number {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-size: 4rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+  line-height: 1;
+  font-family: 'Courier New', monospace;
+}
+
+/* ========== CONTENIDO DEL BENEFICIO ========== */
+.benefit-content {
+  padding: 50px 60px 50px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.benefit-card.card-right .benefit-content {
+  padding: 50px 0 50px 60px;
+}
+
+.benefit-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.benefit-description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #4a4a4a;
+  margin-bottom: 30px;
+  font-weight: 300;
+}
+
+/* ========== LISTA DE DETALLES ========== */
+.benefit-details {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.detail-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+  font-size: 1.05rem;
+  color: #2c2c2c;
+}
+
+.detail-item svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: #1565c0;
+  stroke-width: 2.5;
+}
+
+.detail-item span {
+  font-weight: 400;
+}
+
+/* ========== FOOTER DE SECCIÓN ========== */
+.benefits-footer {
+  margin-top: 100px;
+  padding-top: 60px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.footer-cta {
+  text-align: center;
+}
+
+.footer-text {
+  font-size: 1.3rem;
+  color: #2c2c2c;
+  margin-bottom: 30px;
+  font-weight: 400;
+}
+
+.contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 40px;
+  background: #1565c0;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.05rem;
+  font-weight: 600;
+  border: 2px solid #1565c0;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+}
+
+.contact-link:hover {
+  background: #0d47a1;
+  border-color: #0d47a1;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(21, 101, 192, 0.3);
+}
+
+.contact-link svg {
+  transition: transform 0.3s ease;
+}
+
+.contact-link:hover svg {
+  transform: translateX(4px);
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 1200px) {
+  .benefit-card,
+  .benefit-card.card-right {
+    grid-template-columns: 1fr;
+  }
+
+  .benefit-card.card-right .benefit-image-wrapper,
+  .benefit-card.card-right .benefit-content {
+    order: initial;
+  }
+
+  .benefit-content,
+  .benefit-card.card-right .benefit-content {
+    padding: 40px;
+  }
+
+  .benefit-image-wrapper {
+    min-height: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .benefits-hero {
+    height: 250px;
+  }
+
+  .benefits-container {
+    padding: 60px 20px;
+  }
+
+  .benefits-header {
+    margin-bottom: 60px;
+  }
+
+  .benefits-title {
+    font-size: 2rem;
+  }
+
+  .benefits-subtitle {
+    font-size: 1rem;
+  }
+
+  .benefits-list {
+    gap: 50px;
+  }
+
+  .benefit-image-wrapper {
+    min-height: 250px;
+  }
+
+  .benefit-content,
+  .benefit-card.card-right .benefit-content {
+    padding: 30px 20px;
+  }
+
+  .benefit-title {
+    font-size: 1.6rem;
+  }
+
+  .benefit-description {
+    font-size: 1rem;
+  }
+
+  .detail-item {
+    font-size: 0.95rem;
+  }
+
+  .image-number {
+    font-size: 3rem;
+  }
+
+  .benefits-footer {
+    margin-top: 60px;
+    padding-top: 40px;
+  }
+
+  .footer-text {
+    font-size: 1.1rem;
+  }
+
+  .contact-link {
+    padding: 16px 32px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .benefits-title {
+    font-size: 1.6rem;
+  }
+
+  .benefit-title {
+    font-size: 1.4rem;
+  }
+
+  .image-number {
+    font-size: 2.5rem;
+    bottom: 15px;
+    right: 15px;
+  }
+}

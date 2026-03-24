@@ -1,0 +1,272 @@
+/* IntroSec.css - Versión Profesional Corporativa */
+
+.intro-section {
+  position: relative;
+  min-height: auto;
+  padding: 120px 40px 100px;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+/* Grid sutil corporativo */
+.intro-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+  background-size: 50px 50px;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.intro-container {
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+  z-index: 1;
+}
+
+/* ========== HEADER CORPORATIVO ========== */
+.intro-header {
+  text-align: center;
+  margin-bottom: 80px;
+  position: relative;
+}
+
+.section-number {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1565c0;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+  font-family: 'Courier New', monospace;
+}
+
+.intro-title {
+  font-size: 3.2rem;
+  font-weight: 300;
+  color: #1a1a1a;
+  line-height: 1.2;
+  margin: 0 auto 30px;
+  max-width: 900px;
+  letter-spacing: -0.5px;
+}
+
+.title-underline {
+  width: 80px;
+  height: 3px;
+  background: #1565c0;
+  margin: 0 auto;
+}
+
+/* ========== CONTENIDO PRINCIPAL ========== */
+.intro-content {
+  max-width: 1200px;
+  margin: 0 auto 80px;
+}
+
+.intro-main-text {
+  margin-bottom: 60px;
+}
+
+.lead-paragraph {
+  font-size: 1.25rem;
+  line-height: 1.9;
+  color: #2c2c2c;
+  text-align: center;
+  max-width: 1000px;
+  margin: 0 auto;
+  font-weight: 300;
+}
+
+/* Diseño de dos columnas */
+.intro-dual-column {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 60px;
+  margin-top: 60px;
+}
+
+.column-item {
+  padding: 0;
+}
+
+.column-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 20px;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.column-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background: #1565c0;
+}
+
+.column-text {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #4a4a4a;
+  font-weight: 300;
+}
+
+/* ========== MÉTRICAS CORPORATIVAS ========== */
+.intro-metrics {
+  margin: 80px 0;
+  padding: 60px 0;
+  background: linear-gradient(180deg, #fafafa 0%, #ffffff 100%);
+  border-top: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.metric-card {
+  text-align: center;
+  padding: 40px 20px;
+  background: #ffffff;
+  border: 1px solid #e8e8e8;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.metric-card:hover {
+  border-color: #1565c0;
+  box-shadow: 0 8px 24px rgba(21, 101, 192, 0.08);
+  transform: translateY(-4px);
+}
+
+.metric-icon {
+  margin-bottom: 20px;
+  color: #1565c0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.metric-value {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 12px;
+  line-height: 1;
+}
+
+.metric-label {
+  font-size: 1.1rem;
+  color: #2c2c2c;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.metric-sublabel {
+  font-size: 0.9rem;
+  color: #757575;
+  font-weight: 400;
+}
+
+/* ========== SEPARADOR CORPORATIVO ========== */
+.intro-separator {
+  margin: 60px 0 40px;
+}
+
+.separator-line {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, #d0d0d0 20%, #d0d0d0 80%, transparent 100%);
+}
+
+/* ========== CALL TO ACTION ========== */
+.intro-cta {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.cta-text {
+  font-size: 1.15rem;
+  color: #4a4a4a;
+  font-weight: 300;
+  font-style: italic;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 1200px) {
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .intro-section {
+    padding: 80px 20px 60px;
+  }
+
+  .intro-title {
+    font-size: 2rem;
+  }
+
+  .lead-paragraph {
+    font-size: 1.1rem;
+  }
+
+  .intro-dual-column {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .metric-card {
+    padding: 30px 20px;
+  }
+
+  .metric-value {
+    font-size: 2.5rem;
+  }
+
+  .column-title {
+    font-size: 1.3rem;
+  }
+
+  .column-text {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .intro-title {
+    font-size: 1.6rem;
+  }
+
+  .section-number {
+    font-size: 0.9rem;
+  }
+
+  .cta-text {
+    font-size: 1rem;
+  }
+}
